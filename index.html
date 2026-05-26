@@ -3,133 +3,230 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>LuxeCart | Modern Shopping</title>
+    <title>LuxeCart | Fashion & Lifestyle</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&family=Outfit:wght@300;400;500;600;700&display=swap"
       rel="stylesheet"
     />
     <link rel="stylesheet" href="styles.css" />
   </head>
-  <body>
+  <body class="home-page">
     <header class="topbar">
       <div class="container nav-wrap">
-        <a href="index.html" class="logo">LuxeCart</a>
+        <a href="index.html" class="logo">Luxe<span>Cart</span></a>
         <nav class="main-nav">
           <a href="index.html">Home</a>
+          <a href="#categories">Shop</a>
+          <a href="#featured">Featured</a>
           <a href="#trending">Trending</a>
-          <a href="#best-sellers">Best Sellers</a>
-          <a href="#new-arrivals">New Arrivals</a>
-          <a href="#discounts">Discounts</a>
+          <a href="#reviews">Reviews</a>
         </nav>
         <div class="nav-actions">
           <div class="search-box">
-            <input id="search-input" type="search" placeholder="Search products..." />
+            <input id="search-input" type="search" placeholder="Search fashion..." />
           </div>
-          <button class="icon-btn" id="theme-toggle" aria-label="Toggle dark mode">🌙</button>
+          <button class="icon-btn" id="theme-toggle" aria-label="Toggle dark mode">◐</button>
           <a class="icon-btn" href="wishlist.html" aria-label="Wishlist">♡</a>
-          <a class="icon-btn" href="cart.html" aria-label="Cart">
-            🛒<span id="cart-count" class="count-pill">0</span>
+          <a class="icon-btn cart-icon" href="cart.html" aria-label="Cart">
+            🛍<span id="cart-count" class="count-pill">0</span>
           </a>
-          <a class="profile-chip" href="auth.html">👤 Account</a>
+          <a class="profile-chip" href="auth.html">Account</a>
         </div>
       </div>
     </header>
 
     <main>
-      <section class="hero container">
-        <div class="hero-copy">
-          <span class="tag">Premium Collection 2026</span>
-          <h1>Shop smart, look premium, feel confident.</h1>
-          <p>
-            Discover fashion and tech picks with minimalist design, secure checkout,
-            and lightning-fast experience.
-          </p>
-          <div class="hero-cta">
-            <a href="#trending" class="btn btn-primary">Shop Now</a>
-            <a href="product.html" class="btn btn-secondary">Featured Product</a>
-          </div>
-        </div>
-        <div class="hero-banner">
+      <!-- Hero -->
+      <section class="hero-full">
+        <div class="hero-bg">
           <img
-            src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=1200&q=80"
-            alt="Featured sneakers"
+            src="https://images.unsplash.com/photo-1483985988355-763728e3685b?auto=format&fit=crop&w=1600&q=80"
+            alt="Fashion lifestyle banner"
           />
+          <div class="hero-overlay"></div>
+        </div>
+        <div class="container hero-content fade-in">
+          <span class="hero-tag">Spring / Summer 2026</span>
+          <h1>Style that speaks before you do.</h1>
+          <p class="hero-tagline">
+            Curated fashion & lifestyle pieces — soft fabrics, timeless silhouettes, everyday luxury.
+          </p>
+          <a href="#featured" class="btn btn-primary btn-lg">Shop Now</a>
         </div>
       </section>
 
-      <section class="container section" id="trending">
+      <!-- Categories -->
+      <section class="container section" id="categories">
+        <div class="section-head center">
+          <span class="eyebrow">Browse by style</span>
+          <h2>Shop Categories</h2>
+        </div>
+        <div class="category-grid">
+          <button class="category-card active" data-filter="all" type="button">
+            <span class="cat-icon">✦</span>
+            <span>All</span>
+          </button>
+          <button class="category-card" data-filter="men" type="button">
+            <span class="cat-icon">♂</span>
+            <span>Men</span>
+          </button>
+          <button class="category-card" data-filter="women" type="button">
+            <span class="cat-icon">♀</span>
+            <span>Women</span>
+          </button>
+          <button class="category-card" data-filter="accessories" type="button">
+            <span class="cat-icon">◇</span>
+            <span>Accessories</span>
+          </button>
+          <button class="category-card" data-filter="shoes" type="button">
+            <span class="cat-icon">◎</span>
+            <span>Shoes</span>
+          </button>
+          <button class="category-card" data-filter="beauty" type="button">
+            <span class="cat-icon">❀</span>
+            <span>Beauty</span>
+          </button>
+        </div>
+      </section>
+
+      <!-- Featured -->
+      <section class="container section" id="featured">
         <div class="section-head">
-          <h2>Trending Products</h2>
-          <a href="product.html">View all</a>
+          <div>
+            <span class="eyebrow">Handpicked for you</span>
+            <h2>Featured Products</h2>
+          </div>
+          <a href="product.html" class="link-arrow">View collection →</a>
+        </div>
+        <div class="product-grid" id="featured-grid"></div>
+      </section>
+
+      <!-- Special offer banner -->
+      <section class="container">
+        <div class="promo-banner fade-in">
+          <div class="promo-text">
+            <span class="eyebrow light">Limited time</span>
+            <h2>Up to 40% off on new arrivals</h2>
+            <p>Use code <strong>LUXE40</strong> at checkout. Free shipping over Rs. 999.</p>
+            <a href="checkout.html" class="btn btn-light">Claim Offer</a>
+          </div>
+          <div class="promo-visual">
+            <img
+              src="https://images.unsplash.com/photo-1469334031218-e382a71b716b?auto=format&fit=crop&w=800&q=80"
+              alt="Fashion sale"
+            />
+          </div>
+        </div>
+      </section>
+
+      <!-- Trending -->
+      <section class="container section section-soft" id="trending">
+        <div class="section-head">
+          <div>
+            <span class="eyebrow">What's hot</span>
+            <h2>Trending Now</h2>
+          </div>
+          <a href="#featured" class="link-arrow">See more →</a>
         </div>
         <div class="product-grid" id="trending-grid"></div>
       </section>
 
-      <section class="container section" id="best-sellers">
-        <div class="section-head">
-          <h2>Best Sellers</h2>
-          <a href="product.html">View all</a>
+      <!-- Reviews -->
+      <section class="container section" id="reviews">
+        <div class="section-head center">
+          <span class="eyebrow">Loved by thousands</span>
+          <h2>Customer Reviews</h2>
         </div>
-        <div class="product-grid" id="best-grid"></div>
+        <div class="reviews-grid">
+          <article class="review-card fade-in">
+            <div class="stars">★★★★★</div>
+            <p>"Absolutely love the quality! The hoodie feels premium and shipping was super fast."</p>
+            <div class="reviewer">
+              <img src="https://i.pravatar.cc/80?img=32" alt="" />
+              <div>
+                <strong>Priya Sharma</strong>
+                <span>Mumbai</span>
+              </div>
+            </div>
+          </article>
+          <article class="review-card fade-in">
+            <div class="stars">★★★★★</div>
+            <p>"Clean website, beautiful packaging, and the watch looks even better in person."</p>
+            <div class="reviewer">
+              <img src="https://i.pravatar.cc/80?img=12" alt="" />
+              <div>
+                <strong>Arjun Mehta</strong>
+                <span>Bangalore</span>
+              </div>
+            </div>
+          </article>
+          <article class="review-card fade-in">
+            <div class="stars">★★★★☆</div>
+            <p>"My go-to for lifestyle shopping. Great prices and the return process was hassle-free."</p>
+            <div class="reviewer">
+              <img src="https://i.pravatar.cc/80?img=45" alt="" />
+              <div>
+                <strong>Sneha Reddy</strong>
+                <span>Hyderabad</span>
+              </div>
+            </div>
+          </article>
+        </div>
       </section>
 
-      <section class="container section" id="new-arrivals">
-        <div class="section-head">
-          <h2>New Arrivals</h2>
-          <a href="product.html">View all</a>
-        </div>
-        <div class="product-grid" id="new-grid"></div>
-      </section>
-
-      <section class="container section" id="discounts">
-        <div class="section-head">
-          <h2>Special Discounts</h2>
-          <a href="checkout.html">Grab deals</a>
-        </div>
-        <div class="offer-strip">
-          <article class="offer-card">
-            <h3>Flash Sale</h3>
-            <p>Up to 40% off on accessories.</p>
-          </article>
-          <article class="offer-card">
-            <h3>Weekend Deal</h3>
-            <p>Buy 2, get 1 free on selected apparel.</p>
-          </article>
-          <article class="offer-card">
-            <h3>First Order</h3>
-            <p>Extra 15% off with code: NEW15</p>
-          </article>
+      <!-- Newsletter -->
+      <section class="newsletter-section">
+        <div class="container newsletter-box fade-in">
+          <div class="newsletter-copy">
+            <span class="eyebrow">Stay in the loop</span>
+            <h2>Join our style newsletter</h2>
+            <p>Get early access to sales, new drops, and exclusive fashion tips.</p>
+          </div>
+          <form id="newsletter-form" class="newsletter-form-lg">
+            <input type="email" name="email" placeholder="Your email address" required />
+            <button type="submit" class="btn btn-primary">Subscribe</button>
+          </form>
         </div>
       </section>
     </main>
 
     <footer class="site-footer">
       <div class="container footer-grid">
-        <div>
-          <h4>LuxeCart</h4>
-          <p>Modern shopping with premium feel and trusted checkout.</p>
+        <div class="footer-brand">
+          <a href="index.html" class="logo">Luxe<span>Cart</span></a>
+          <p>Premium fashion & lifestyle for the modern wardrobe. Curated with care, delivered with love.</p>
+          <div class="social-links">
+            <a href="#" aria-label="Instagram">Instagram</a>
+            <a href="#" aria-label="Pinterest">Pinterest</a>
+            <a href="#" aria-label="Facebook">Facebook</a>
+            <a href="#" aria-label="YouTube">YouTube</a>
+          </div>
         </div>
         <div>
-          <h5>Customer Support</h5>
+          <h5>Shop</h5>
+          <a href="#categories">Categories</a>
+          <a href="#featured">Featured</a>
+          <a href="#trending">Trending</a>
+          <a href="wishlist.html">Wishlist</a>
+        </div>
+        <div>
+          <h5>Support</h5>
           <a href="#">Help Center</a>
-          <a href="#">Shipping</a>
+          <a href="#">Shipping & Delivery</a>
           <a href="#">Returns</a>
+          <a href="#">Size Guide</a>
         </div>
         <div>
-          <h5>Social</h5>
-          <a href="#">Instagram</a>
-          <a href="#">YouTube</a>
-          <a href="#">X / Twitter</a>
+          <h5>Account</h5>
+          <a href="auth.html">Login / Signup</a>
+          <a href="cart.html">My Cart</a>
+          <a href="checkout.html">Checkout</a>
         </div>
-        <div>
-          <h5>Newsletter</h5>
-          <form class="newsletter-form">
-            <input type="email" placeholder="Enter your email" />
-            <button type="submit">Subscribe</button>
-          </form>
-        </div>
+      </div>
+      <div class="container footer-bottom">
+        <p>© 2026 LuxeCart. All rights reserved.</p>
       </div>
     </footer>
 

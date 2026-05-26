@@ -1,6 +1,25 @@
 const THEME_KEY = "luxe_theme";
 let currentUser = null;
 let products = [];
+let activeCategory = "all";
+
+const fashionSegment = {
+  1: "shoes",
+  2: "accessories",
+  3: "women",
+  4: "men",
+  5: "accessories",
+  6: "beauty"
+};
+
+const segmentLabel = {
+  shoes: "Shoes",
+  accessories: "Accessories",
+  women: "Women",
+  men: "Men",
+  beauty: "Beauty",
+  trending: "Trending"
+};
 
 async function api(url, options = {}) {
   const res = await fetch(url, {
@@ -27,18 +46,23 @@ function showToast(message, type = "info") {
 }
 
 function productCard(product) {
+  const seg = fashionSegment[product.id] || product.category;
+  const label = segmentLabel[seg] || product.category;
   return `
-    <article class="product-card fade-in">
-      <img src="${product.image}" alt="${product.name}">
+    <article class="product-card fade-in" data-segment="${seg}">
+      <div class="card-img-wrap">
+        <span class="product-badge">${label}</span>
+        <img src="${product.image}" alt="${product.name}" loading="lazy">
+      </div>
       <div class="card-body">
         <h3>${product.name}</h3>
         <div class="price-line">
-          <span class="price">Rs. ${product.price}</span>
+          <span class="price">Rs. ${product.price.toLocaleString("en-IN")}</span>
           <span class="rating">★ ${product.rating}</span>
         </div>
         <div class="card-actions">
           <button class="add-cart" data-id="${product.id}" type="button">Add to Cart</button>
-          <a href="product.html?id=${product.id}">Details</a>
+          <a href="product.html?id=${product.id}">View</a>
         </div>
       </div>
     </article>
@@ -101,24 +125,71 @@ function renderHomeSection(id, category) {
   const grid = document.getElementById(id);
   if (!grid) return;
   const items = products.filter((item) => item.category === category);
-  grid.innerHTML = items.map(productCard).join("");
+  grid.innerHTML = items.length
+    ? items.map(productCard).join("")
+    : "<p class='muted'>No products in this section yet.</p>";
   bindCartButtons(grid);
+}
+
+function renderFeaturedGrid() {
+  const grid = document.getElementById("featured-grid");
+  if (!grid) return;
+  let items = [...products];
+  if (activeCategory !== "all") {
+    items = items.filter((p) => fashionSegment[p.id] === activeCategory);
+  }
+  grid.innerHTML = items.length
+    ? items.map(productCard).join("")
+    : "<p class='muted'>No products in this category.</p>";
+  bindCartButtons(grid);
+}
+
+function setupCategories() {
+  const buttons = document.querySelectorAll(".category-card");
+  if (!buttons.length) return;
+  buttons.forEach((btn) => {
+    btn.addEventListener("click", () => {
+      buttons.forEach((b) => b.classList.remove("active"));
+      btn.classList.add("active");
+      activeCategory = btn.dataset.filter;
+      renderFeaturedGrid();
+      document.getElementById("featured")?.scrollIntoView({ behavior: "smooth" });
+    });
+  });
+}
+
+function setupNewsletter() {
+  const form = document.getElementById("newsletter-form");
+  if (!form) return;
+  form.addEventListener("submit", (e) => {
+    e.preventDefault();
+    showToast("Thanks for subscribing! Check your inbox soon.", "success");
+    form.reset();
+  });
 }
 
 function setupSearch() {
   const input = document.getElementById("search-input");
   const trendingGrid = document.getElementById("trending-grid");
-  if (!input || !trendingGrid) return;
+  const featuredGrid = document.getElementById("featured-grid");
+  if (!input) return;
 
   input.addEventListener("input", async () => {
     const value = input.value.trim();
     try {
       const url = value ? `/api/products?q=${encodeURIComponent(value)}` : "/api/products";
       const data = await api(url);
-      trendingGrid.innerHTML = data.products.map(productCard).join("");
-      bindCartButtons(trendingGrid);
+      products = data.products;
+      if (trendingGrid) {
+        trendingGrid.innerHTML = data.products
+          .filter((p) => p.category === "trending")
+          .map(productCard)
+          .join("") || data.products.slice(0, 4).map(productCard).join("");
+        bindCartButtons(trendingGrid);
+      }
+      if (featuredGrid) renderFeaturedGrid();
     } catch {
-      trendingGrid.innerHTML = "<p class='muted'>No products found.</p>";
+      if (trendingGrid) trendingGrid.innerHTML = "<p class='muted'>No products found.</p>";
     }
   });
 }
@@ -434,9 +505,10 @@ async function init() {
   initTheme();
   await loadUser();
   await loadProducts();
+  renderFeaturedGrid();
   renderHomeSection("trending-grid", "trending");
-  renderHomeSection("best-grid", "best");
-  renderHomeSection("new-grid", "new");
+  setupCategories();
+  setupNewsletter();
   setupSearch();
   await refreshCartCount();
   await loadCartPage();
