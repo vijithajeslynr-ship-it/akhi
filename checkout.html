@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Secure Checkout | LuxeCart</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div class="container nav-wrap">
+        <a href="index.html" class="logo">LuxeCart</a>
+        <nav class="main-nav">
+          <a href="index.html">Home</a>
+          <a href="cart.html">Cart</a>
+          <a href="wishlist.html">Wishlist</a>
+          <a href="auth.html">Account</a>
+        </nav>
+        <div class="nav-actions">
+          <button class="icon-btn" id="theme-toggle" aria-label="Toggle dark mode">🌙</button>
+          <a class="icon-btn" href="cart.html">🛒<span id="cart-count" class="count-pill">0</span></a>
+        </div>
+      </div>
+    </header>
+
+    <main class="container page-block checkout-layout">
+      <form id="checkout-form" class="panel secure-form fade-in">
+        <h1>Checkout</h1>
+        <p class="badge-secure">🔒 Secure checkout — orders saved to your account</p>
+        <input class="field" type="text" name="name" placeholder="Full Name" required />
+        <input class="field" type="email" name="email" placeholder="Email Address" required />
+        <input class="field" type="text" name="address" placeholder="Shipping Address" required />
+        <select name="delivery">
+          <option value="standard">Standard Delivery (3-5 days) — Rs. 99</option>
+          <option value="express">Express Delivery (1-2 days) — Rs. 199</option>
+        </select>
+        <h3>Payment Options</h3>
+        <div class="payment-options">
+          <label><input type="radio" name="payment" value="card" checked /> Credit / Debit Card</label>
+          <label><input type="radio" name="payment" value="upi" /> UPI / Wallet</label>
+          <label><input type="radio" name="payment" value="cod" /> Cash on Delivery</label>
+        </div>
+        <button type="submit">Place Secure Order</button>
+      </form>
+
+      <aside class="panel fade-in">
+        <h2>Order Summary</h2>
+        <div id="order-summary"></div>
+        <p class="muted">By placing this order, you agree to terms and privacy policy.</p>
+      </aside>
+    </main>
+
+    <script src="script.js"></script>
+  </body>
+</html>

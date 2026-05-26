@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Your Cart | LuxeCart</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div class="container nav-wrap">
+        <a href="index.html" class="logo">LuxeCart</a>
+        <nav class="main-nav">
+          <a href="index.html">Home</a>
+          <a href="product.html">Product</a>
+          <a href="wishlist.html">Wishlist</a>
+          <a href="checkout.html">Checkout</a>
+        </nav>
+        <div class="nav-actions">
+          <button class="icon-btn" id="theme-toggle" aria-label="Toggle dark mode">🌙</button>
+          <a class="icon-btn" href="cart.html">🛒<span id="cart-count" class="count-pill">0</span></a>
+        </div>
+      </div>
+    </header>
+
+    <main class="container page-block">
+      <div class="panel fade-in">
+        <h1>Your Shopping Cart</h1>
+        <p class="muted">Review your items before checkout.</p>
+        <div class="list" id="cart-list"></div>
+        <div class="list-item">
+          <strong>Total</strong>
+          <strong id="cart-total">Rs. 0</strong>
+        </div>
+        <div class="hero-cta">
+          <a class="btn btn-secondary" href="index.html">Continue Shopping</a>
+          <a class="btn btn-primary" href="checkout.html">Proceed to Checkout</a>
+        </div>
+      </div>
+    </main>
+
+    <script src="script.js"></script>
+  </body>
+</html>

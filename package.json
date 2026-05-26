@@ -1,0 +1,9 @@
+{
+  "name": "luxecart",
+  "version": "1.0.0",
+  "description": "LuxeCart shopping website — no npm packages required",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  }
+}

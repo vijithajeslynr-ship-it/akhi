@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Wishlist | LuxeCart</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div class="container nav-wrap">
+        <a href="index.html" class="logo">LuxeCart</a>
+        <nav class="main-nav">
+          <a href="index.html">Home</a>
+          <a href="product.html">Product</a>
+          <a href="cart.html">Cart</a>
+          <a href="checkout.html">Checkout</a>
+        </nav>
+        <div class="nav-actions">
+          <button class="icon-btn" id="theme-toggle" aria-label="Toggle dark mode">🌙</button>
+          <a class="icon-btn" href="cart.html">🛒<span id="cart-count" class="count-pill">0</span></a>
+        </div>
+      </div>
+    </header>
+
+    <main class="container page-block">
+      <div class="panel fade-in">
+        <h1>Saved Wishlist</h1>
+        <p class="muted">Your favorite picks are here.</p>
+        <div class="list" id="wishlist-list"></div>
+      </div>
+    </main>
+
+    <script src="script.js"></script>
+  </body>
+</html>

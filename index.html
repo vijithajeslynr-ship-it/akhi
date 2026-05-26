@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>LuxeCart | Modern Shopping</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div class="container nav-wrap">
+        <a href="index.html" class="logo">LuxeCart</a>
+        <nav class="main-nav">
+          <a href="index.html">Home</a>
+          <a href="#trending">Trending</a>
+          <a href="#best-sellers">Best Sellers</a>
+          <a href="#new-arrivals">New Arrivals</a>
+          <a href="#discounts">Discounts</a>
+        </nav>
+        <div class="nav-actions">
+          <div class="search-box">
+            <input id="search-input" type="search" placeholder="Search products..." />
+          </div>
+          <button class="icon-btn" id="theme-toggle" aria-label="Toggle dark mode">🌙</button>
+          <a class="icon-btn" href="wishlist.html" aria-label="Wishlist">♡</a>
+          <a class="icon-btn" href="cart.html" aria-label="Cart">
+            🛒<span id="cart-count" class="count-pill">0</span>
+          </a>
+          <a class="profile-chip" href="auth.html">👤 Account</a>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero container">
+        <div class="hero-copy">
+          <span class="tag">Premium Collection 2026</span>
+          <h1>Shop smart, look premium, feel confident.</h1>
+          <p>
+            Discover fashion and tech picks with minimalist design, secure checkout,
+            and lightning-fast experience.
+          </p>
+          <div class="hero-cta">
+            <a href="#trending" class="btn btn-primary">Shop Now</a>
+            <a href="product.html" class="btn btn-secondary">Featured Product</a>
+          </div>
+        </div>
+        <div class="hero-banner">
+          <img
+            src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=1200&q=80"
+            alt="Featured sneakers"
+          />
+        </div>
+      </section>
+
+      <section class="container section" id="trending">
+        <div class="section-head">
+          <h2>Trending Products</h2>
+          <a href="product.html">View all</a>
+        </div>
+        <div class="product-grid" id="trending-grid"></div>
+      </section>
+
+      <section class="container section" id="best-sellers">
+        <div class="section-head">
+          <h2>Best Sellers</h2>
+          <a href="product.html">View all</a>
+        </div>
+        <div class="product-grid" id="best-grid"></div>
+      </section>
+
+      <section class="container section" id="new-arrivals">
+        <div class="section-head">
+          <h2>New Arrivals</h2>
+          <a href="product.html">View all</a>
+        </div>
+        <div class="product-grid" id="new-grid"></div>
+      </section>
+
+      <section class="container section" id="discounts">
+        <div class="section-head">
+          <h2>Special Discounts</h2>
+          <a href="checkout.html">Grab deals</a>
+        </div>
+        <div class="offer-strip">
+          <article class="offer-card">
+            <h3>Flash Sale</h3>
+            <p>Up to 40% off on accessories.</p>
+          </article>
+          <article class="offer-card">
+            <h3>Weekend Deal</h3>
+            <p>Buy 2, get 1 free on selected apparel.</p>
+          </article>
+          <article class="offer-card">
+            <h3>First Order</h3>
+            <p>Extra 15% off with code: NEW15</p>
+          </article>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-grid">
+        <div>
+          <h4>LuxeCart</h4>
+          <p>Modern shopping with premium feel and trusted checkout.</p>
+        </div>
+        <div>
+          <h5>Customer Support</h5>
+          <a href="#">Help Center</a>
+          <a href="#">Shipping</a>
+          <a href="#">Returns</a>
+        </div>
+        <div>
+          <h5>Social</h5>
+          <a href="#">Instagram</a>
+          <a href="#">YouTube</a>
+          <a href="#">X / Twitter</a>
+        </div>
+        <div>
+          <h5>Newsletter</h5>
+          <form class="newsletter-form">
+            <input type="email" placeholder="Enter your email" />
+            <button type="submit">Subscribe</button>
+          </form>
+        </div>
+      </div>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>

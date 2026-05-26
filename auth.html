@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login / Signup | LuxeCart</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div class="container nav-wrap">
+        <a href="index.html" class="logo">LuxeCart</a>
+        <nav class="main-nav">
+          <a href="index.html">Home</a>
+          <a href="product.html">Product</a>
+          <a href="cart.html">Cart</a>
+          <a href="checkout.html">Checkout</a>
+        </nav>
+        <div class="nav-actions">
+          <button class="icon-btn" id="theme-toggle" aria-label="Toggle dark mode">🌙</button>
+          <a class="icon-btn" href="cart.html">🛒<span id="cart-count" class="count-pill">0</span></a>
+        </div>
+      </div>
+    </header>
+
+    <main class="container page-block">
+      <section class="panel auth-card fade-in">
+        <div class="tabs">
+          <button class="tab-btn active" data-mode="login" type="button">Login</button>
+          <button class="tab-btn" data-mode="signup" type="button">Signup</button>
+        </div>
+        <h1 id="auth-title">Welcome back</h1>
+        <p class="muted">Demo account: <strong>demo@luxecart.com</strong> / <strong>demo123</strong></p>
+        <p id="auth-message" class="auth-message"></p>
+        <form id="auth-form" class="auth-form">
+          <input id="auth-name" class="field" type="text" name="name" placeholder="Full name" style="display: none" />
+          <input class="field" type="email" name="email" placeholder="Email address" required />
+          <input class="field" type="password" name="password" placeholder="Password" required minlength="6" />
+          <button type="submit">Continue</button>
+        </form>
+      </section>
+    </main>
+
+    <script src="script.js"></script>
+  </body>
+</html>
