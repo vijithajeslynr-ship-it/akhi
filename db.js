@@ -2,7 +2,9 @@ const fs = require("fs");
 const path = require("path");
 const crypto = require("crypto");
 
-const DATA_DIR = path.join(__dirname, "data");
+const DATA_DIR = process.env.VERCEL
+  ? path.join("/tmp", "luxecart-data")
+  : path.join(__dirname, "data");
 const DB_PATH = path.join(DATA_DIR, "db.json");
 
 const SEED_PRODUCTS = [
@@ -88,9 +90,44 @@ function defaultDb() {
     carts: {},
     wishlists: {},
     orders: [],
+    sessions: {},
     nextUserId: 1,
     nextOrderId: 1
   };
+}
+
+function getSessionUserId(sid) {
+  if (!sid) return null;
+  const db = readDb();
+  if (!db.sessions) return null;
+  const session = db.sessions[sid];
+  if (!session) return null;
+  if (session.expires < Date.now()) {
+    delete db.sessions[sid];
+    writeDb(db);
+    return null;
+  }
+  return session.userId;
+}
+
+function createSession(userId) {
+  const db = readDb();
+  if (!db.sessions) db.sessions = {};
+  const sid = crypto.randomBytes(24).toString("hex");
+  db.sessions[sid] = {
+    userId,
+    expires: Date.now() + 7 * 24 * 60 * 60 * 1000
+  };
+  writeDb(db);
+  return sid;
+}
+
+function destroySession(sid) {
+  if (!sid) return;
+  const db = readDb();
+  if (!db.sessions) return;
+  delete db.sessions[sid];
+  writeDb(db);
 }
 
 function ensureDb() {
@@ -266,5 +303,8 @@ module.exports = {
   getWishlist,
   addToWishlist,
   removeFromWishlist,
-  createOrder
+  createOrder,
+  getSessionUserId,
+  createSession,
+  destroySession
 };

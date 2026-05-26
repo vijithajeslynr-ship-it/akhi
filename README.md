@@ -42,6 +42,15 @@ Or click **Signup** to create your own account.
 - `index.html`, `auth.html`, etc. — pages
 - `script.js` — connects pages to server
 
-## Put online later
+## Deploy on Vercel
 
-Install Node.js on a host (Render, Railway, etc.) and run `node server.js`.
+1. Push this repo to GitHub
+2. In Vercel → Project **Settings** → **General**:
+   - **Framework Preset:** Other
+   - **Build Command:** (leave empty)
+   - **Output Directory:** `.`
+3. Redeploy
+
+Login on live site: `demo@luxecart.com` / `demo123`
+
+> If you see "Create Next App", the wrong framework is selected — set Framework to **Other** and redeploy.
